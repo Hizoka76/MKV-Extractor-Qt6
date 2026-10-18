@@ -271,7 +271,7 @@ class TracksMixin:
                         info1 = Track["properties"]["track_name"]
 
                     elif "audio_sampling_frequency" in Track["properties"]:
-                        info1 = Track["properties"]["audio_sampling_frequency"]
+                        info1 = str(Track["properties"]["audio_sampling_frequency"])
 
                     else:
                         info1 = ""

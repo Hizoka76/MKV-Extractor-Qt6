@@ -137,6 +137,7 @@ class MKVExtractorQt6(SoftwareMixin, MKVToolsMixin, TracksMixin, CommandMixin, W
         )
         self.ui.reply_info.resize(100, 150)
         self.ui.verticalLayout_8.addWidget(self.ui.reply_info)
+
         # [Claude] CORRECTION traduction au démarrage : OptionLanguage() est appelée AVANT
         # la création de reply_info, donc retranslate() ne peut pas y être déclenché.
         # On l'appelle ici, juste après la création, pour charger les textes dans la bonne
@@ -2746,16 +2747,22 @@ class MKVExtractorQt6(SoftwareMixin, MKVToolsMixin, TracksMixin, CommandMixin, W
 if __name__ == "__main__":
     ### Informations sur l'application'
     app = QApplication(sys.argv)
-    app.setApplicationVersion("26.04.29a")
+    app.setApplicationVersion("26.10.18a")
     app.setApplicationName("MKV Extractor Qt6")
 
     ### Gestion de l'emplacement du logiciel
-    FileURL = QFileInfo(sys.argv[0])
+    # [Claude] Support PyInstaller : en mode "gelé" (sys.frozen), les données
+    # embarquées (Languages/, QFileDialogCustom/) sont extraites dans sys._MEIPASS
+    # et non à côté de sys.argv[0]. On utilise donc ce dossier comme racine.
+    if getattr(sys, "frozen", False):
+        AppFolder = sys._MEIPASS
+    else:
+        FileURL = QFileInfo(sys.argv[0])
 
-    while FileURL.isSymLink():
-        FileURL = QFileInfo(FileURL.symLinkTarget())
+        while FileURL.isSymLink():
+            FileURL = QFileInfo(FileURL.symLinkTarget())
 
-    AppFolder = FileURL.absolutePath()
+        AppFolder = FileURL.absolutePath()
 
     ### Création des dictionnaires et listes facilement modifiables partout
     # Dictionnaire qui contiendra toutes les pistes du fichier MKV

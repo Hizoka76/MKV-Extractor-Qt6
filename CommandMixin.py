@@ -3,7 +3,7 @@
 """Mixin de création des commandes d'extraction/conversion MKV."""
 
 import state
-from PySide6.QtCore import QFile, QFileInfo, QStorageInfo, QThread
+from PySide6.QtCore import QFile, QFileInfo, QStorageInfo, Qt, QThread
 from PySide6.QtWidgets import QCheckBox, QMessageBox, QPushButton
 from PySide6.QtGui import QIcon
 from QFileDialogCustom.QFileDialogCustom import QFileDialogCustom
@@ -79,7 +79,7 @@ class CommandMixin:
                     QIcon.fromTheme(
                         "mkv-extractor-qt6", QIcon(":/icons/mkv-extractor-qt6.webp")
                     ),
-                    "MKV Extracor Qt 5",
+                    "MKV Extracor Qt 6",
                     UseMMG,
                 )  # Création du bouton MKV Extracor Qt
 
