@@ -1430,7 +1430,7 @@
     <string>&amp;About MKV Extractor Qt</string>
    </property>
    <property name="statusTip">
-    <string>Display information about MKV Extractor Qt5.</string>
+    <string>Display information about MKV Extractor Qt6.</string>
    </property>
    <property name="menuRole">
     <enum>QAction::MenuRole::AboutRole</enum>

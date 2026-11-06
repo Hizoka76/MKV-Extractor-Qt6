@@ -79,15 +79,15 @@ class CommandMixin:
                     QIcon.fromTheme(
                         "mkv-extractor-qt6", QIcon(":/icons/mkv-extractor-qt6.webp")
                     ),
-                    "MKV Extracor Qt 6",
+                    "MKV Extractor Qt 6",
                     UseMMG,
-                )  # Création du bouton MKV Extracor Qt
+                )  # Création du bouton MKV Extractor Qt
 
                 # Remplissage de la fenêtre
                 UseMMG.setCheckBox(CheckBox)  # Envoie de la checkbox
                 UseMMG.addButton(MMG, QMessageBox.YesRole)  # Ajout du bouton
                 UseMMG.addButton(MEQ, QMessageBox.NoRole)  # Ajout du bouton
-                UseMMG.setDefaultButton(MEQ)  # Bouton par défaut : MKV Extracor Qt
+                UseMMG.setDefaultButton(MEQ)  # Bouton par défaut : MKV Extractor Qt
 
                 # Lancement de la fenêtre
                 UseMMG.exec()  # Message d'information
